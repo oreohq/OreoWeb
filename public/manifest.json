@@ -1,0 +1,18 @@
+{
+    "name": "Oreo Discord Bot",
+    "short_name": "Oreo",
+    "description": "Landing Page and Guide for Oreo Discord App",
+    "scope": "/",
+    "start_url": "/",
+    "form_factor": "wide",
+    "display": "standalone",
+    "background_color": "#13131B",
+    "theme_color": "#13131B",
+    "orientation": "portrait-primary",
+    "icons": [{
+        "src": "/oreo.png",
+        "type": "image/png",
+        "sizes": "675x675",
+        "purpose": "any maskable"
+    }]
+}

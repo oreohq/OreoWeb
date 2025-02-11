@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #FFA277;
+    --background: #13131B;
+}
+
+html {
+    min-height: 100vh;
+    min-height: 100svh;
+    scroll-behavior: smooth;
+    background: var(--background) !important;
+}
+
+
+::selection {
+    background-color: rgba(255, 130, 77 , 0.4);
+}
+
+.scroll {
+    border: 2px solid var(--primary);
+    position: relative;
+    height: 2.2rem;
+    width: 20px;
+}
+
+.scroll-wheel {
+    background: var(--primary);
+    border-radius: 1rem;
+    left: calc(50% - 1.5px);
+    position: absolute;
+    height: 0.5rem;
+    right: 50%;
+    width: 3px;
+    top: 8px;
+}
+
+
+button.subpixel-antialiased:not(.default):not(.button-primary):not(.button-secondary):not(.button-blurple),
+a[role="button"]:not(.default):not(.button-primary):not(.button-secondary):not(.button-blurple) {
+    @apply py-2 px-4 duration-200 justify-center gap-2 items-center text-medium
+}
+
+.button {
+    @apply flex text-neutral-100 bg-dark-600 hover:bg-dark-700 py-2 px-4 duration-200 justify-center gap-2 items-center text-medium
+}
+
+.button-primary {
+    @apply flex text-neutral-900 bg-oreo-600 hover:bg-oreo-700 py-2 px-4 duration-200 justify-center gap-2 items-center font-medium text-medium
+}
+
+.button-secondary {
+    @apply flex text-neutral-100 bg-dark-600 hover:bg-dark-700 py-2 px-4 duration-200 justify-center gap-2 items-center font-medium text-medium
+}
+
+.button-blurple {
+    @apply flex text-neutral-100 bg-blurple hover:bg-blurple py-2 px-4 duration-200 justify-center gap-2 items-center font-medium text-medium
+}
+
+.text-sm button.subpixel-antialiased,
+.text-sm a[role="button"] {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.before\:border-t::before {
+    border-top-width: 0px !important;
+}
+
+::-webkit-scrollbar {
+    width: 14px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #232330;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4a4a61;
+    border-radius: 8px;
+}

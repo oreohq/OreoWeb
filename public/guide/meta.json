@@ -1,0 +1,28 @@
+{
+    "pages": [
+        {
+            "name": "Adding a User",
+            "file": "add.md"
+        },
+        {
+            "name": "Customizing a User",
+            "file": "customize.md"
+        },
+        {
+            "name": "Using Placeholders",
+            "file": "placeholders.md"
+        },
+        {
+            "name": "Pinging a Role",
+            "file": "pingrole.md"
+        },
+        {
+            "name": "Using Custom Embeds",
+            "file": "embeds.md"
+        },
+        {
+            "name": "Send Test Notification",
+            "file": "testnotifications.md"
+        }
+    ]
+}
