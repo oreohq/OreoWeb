@@ -19,7 +19,7 @@ const data = [
         title: "How do I configure Oreo for my Sever?",
         content: (
         <ol className="list-decimal list-inside marker:text-neutral-500 text-neutral-300" itemProp="text">
-            <li>In the Discord App, in channel of your server, type <Code className="bg-oreo-700/20 text-oreo-600">/settings</Code>.</li>
+            <li>In the Discord App, in any channel of your server, type <Code className="bg-oreo-700/20 text-oreo-600">/settings</Code>.</li>
             <li>From the popup displayed, click on Slash Command of Oreo and then execute it.</li>
             <li>Now use the different Settings Options present to configure the settings for the Server.</li>
             <li>For any help regarding configuration, refer to the guide <LinkTag href="/guide/add" target="_self">oreos.fun/guide</LinkTag>.</li>
