@@ -21,6 +21,7 @@ const config: Config = {
                 },
                 dark: {
                     DEFAULT: "var(--background)",
+                    500: "#303045",
                     600: "#292938",
                     700: "#232330",
                     800: "#1A1A24",

@@ -13,7 +13,10 @@ import cn from "@/utils/cn";
 
 
 export default async function Home() {
-    const topGuilds = await fetch(`${process.env.NEXT_PUBLIC_API}/guilds`).then(res => res.json()).catch(() => {});
+    const topGuilds = await fetch(`${process.env.NEXT_PUBLIC_API}/guilds`, {
+        headers: { Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN}` },
+        next: { revalidate: 60 * 60 }
+    }).then(res => res.json()).catch(() => {});
 
     return (
         <div className="flex items-center flex-col w-full" >

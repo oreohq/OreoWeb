@@ -1,7 +1,7 @@
 import { CheckCircle, DoubleCircle, ExclamationCircle, GreenStatus, LightningBolt, RedStatus, XCircle } from "@/components/icons";
 import { ClusterResource, HistoryStatus, Status, StatusHistory, StatusResource } from "./api";
+import { stackDay, stackDowntime, botUptime } from "@/utils/time";
 import { Chip, Divider } from "@nextui-org/react";
-import { stackDay, stackDowntime } from "@/utils/time";
 import cn from "@/utils/cn";
 
 
@@ -51,9 +51,10 @@ export function Cluster(cluster: ClusterResource) {
             {cluster.ping > 0 
             ?
                 (<div>
-                    <div><span className="text-neutral-300 font-medium" >{cluster.memory}mb</span> memory</div>
-                    <div><span className="text-neutral-300 font-medium" >{cluster.guilds}</span> guilds</div>
-                    <div><span className="text-neutral-300 font-medium" >{cluster.users}</span> users</div>
+                    <div>Guilds: <span className="text-neutral-300 font-medium" >{cluster.guilds}</span></div>
+                    <div>Users: <span className="text-neutral-300 font-medium" >{cluster.users}</span></div>
+                    <div>Memory: <span className="text-neutral-300 font-medium" >{`${formatBytes(cluster.memory)}`}</span></div>
+                    <div>Uptime: <span className="text-neutral-300 font-medium" >{botUptime(cluster.uptime)}</span></div>
                 </div>)
             : 
                 <></>
@@ -74,7 +75,14 @@ export function StatusChip({ status, className }: { status: Status; className?: 
 
 
 function EmojiIcon({ ping }: { ping: number; }) {
-    return (ping > 0 ? <GreenStatus className="size-5" /> : <RedStatus className="size-5 text-status-red" />);
+    return (ping > 0 ? <GreenStatus className="size-5" color="#00E09A" /> : <RedStatus className="size-5" color="#FF5959" />);
+}
+
+
+function formatBytes(bytes: number, decimals = 2) {
+    const sizes = ['b', 'kb', 'mb', 'gb', 'tb'];
+    const byteSize = Math.floor(Math.log(bytes) / Math.log(1024));
+    return parseFloat((bytes / Math.pow(1024, byteSize)).toFixed(decimals)) + sizes[byteSize];
 }
 
 
@@ -93,7 +101,7 @@ export function StatusIcon({ status, className }: { status: Status | HistoryStat
 
 function StatusItem({ history, index }: { history: StatusHistory; index: number; }) {
     const itemText = { operational: "Operational", downtime: "Downtime", recovered: "State Recovered", maintance: "Maintance", degraded: "Degraded Performance", not_monitored: "Not Monitored" };
-    let itemClass = { operational: "bg-status-green", downtime: "bg-status-red h-9", recovered: "", maintance: "bg-status-blue", degraded: "bg-status-orange", not_monitored: "bg-neutral-500" }[history.status];
+    let itemClass = { operational: "bg-status-green", downtime: "bg-status-red h-9", recovered: "", maintance: "bg-status-blue", degraded: "bg-status-orange", not_monitored: "bg-dark-500" }[history.status];
     if (history.downtime_duration > 0) itemClass = "h-9 " + (history.downtime_duration > 3600 ? (history.downtime_duration > 14400 ? "bg-status-red" : "bg-status-orange") : "bg-status-green opacity-80");
     return (
         <div className={cn("w-full relative group block", index < 60 ? "hidden lg:block" : "")}>

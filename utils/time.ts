@@ -83,3 +83,12 @@ export function stackDowntime(time: number) {
     }).filter(t => t);
     return "Down for " + (calcTime.length > 1 ? (`${calcTime.slice(0, -1).join(", ")} and ${calcTime.slice(-1)}`) : calcTime.join(", "));
 }
+
+
+export function botUptime(ms: number) {
+    const calcTime = ["d", "h", "m", "s"].map((word, i) => {
+        const calc = Math.floor(ms / ([86400000, 3600000, 60000, 1000][i]) % ([100, 24, 60, 60][i]));
+        return calc > 0 ? `${calc}${word}` : null;
+    }).filter(t => t);
+    return calcTime.join(" ");
+}

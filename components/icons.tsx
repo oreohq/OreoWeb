@@ -159,20 +159,19 @@ export function DoubleCircle({ className, color }: IconProps) {
 
 export function GreenStatus({ className, color }: IconProps) {
     return (
-        <svg className={className} fill={color || "none"} width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10.5469" fill="#00E09A"/>
+        <svg className={className} fill={"none"} width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10.5469" fill={color || "#00E09A"}/>
             <circle cx="12" cy="12" r="7.91016" fill="black" fillOpacity="0.35"/>
             <path d="M7.35938 10.0532C7.74609 9.01392 9.34131 7.49121 10.2598 7.20117" stroke="white" strokeWidth="2" strokeLinecap="round"/>
         </svg>
     )
-    
 }
 
 
 export function RedStatus({ className, color }: IconProps) {
     return (
-        <svg className={className} fill={color || "none"} width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10.5469" fill="#ff5959"/>
+        <svg className={className} fill={"none"} width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="10.5469" fill={color || "#FF5959"}/>
             <circle cx="12" cy="12" r="7.91016" fill="black" fillOpacity="0.35"/>
             <path d="M7.35938 10.0532C7.74609 9.01392 9.34131 7.49121 10.2598 7.20117" stroke="white" strokeWidth="2" strokeLinecap="round"/>
         </svg>

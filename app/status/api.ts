@@ -23,14 +23,15 @@ export interface ClusterResource {
     ping: number;
     memory: number;
     guilds: number;
+    uptime: number;
     users: number;
 }
 
 export const ResourceIDS = {
-    oreoProd: 2594288,
-    oreoStaging: 2594290,
-    oreoApi: 2594287,
-    oreoWeb: 2594291
+    oreoProd: 3006635,
+    oreoStaging: 3006637,
+    oreoApi: 3006638,
+    oreoWeb: 3006641
 }
 
 
