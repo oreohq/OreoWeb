@@ -1,5 +1,5 @@
 # Terms of Service
-**last modified 11/02/2025 (DD/MM/YYYY)**
+**last modified 18/02/2025 (DD/MM/YYYY)**
 
 ## 1. Acceptance of Terms
 By using Oreo ("the Bot"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree with these Terms, please do not use Oreo.

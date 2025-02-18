@@ -1,5 +1,5 @@
 # Privacy Policy
-**last modified 11/02/2024 (DD/MM/YYYY)**
+**last modified 18/02/2024 (DD/MM/YYYY)**
 
 ## 1. Introduction
 Welcome to Oreo, a notifier discord bot (referred to collectively as "Oreo," "we," "us," or "our"). This Privacy Policy outlines the information we collect, how we use it, and the choices you have concerning your personal data. By using Oreo, you consent to the practices described in this Privacy Policy.
