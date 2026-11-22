@@ -1,0 +1,74 @@
+---
+title: Write the message
+description: Every placeholder you can use.
+---
+
+Placeholders are words in curly brackets. Oreo swaps them for real details when it posts. They work in the message and in every embed text field.
+
+## Edit a message
+
+1. Open the creator in the [dashboard](/dashboard) and go to **Message**.
+2. Pick the kind of post. YouTube has one message each for livestreams, videos, premieres and shorts. Members-only posts use the video message. Twitch and Kick have one for livestreams.
+3. Write the message. Click a placeholder below the box to insert it.
+4. Click **Save changes**. **Reset** restores Oreo's default.
+
+![Writing a message](/guide-assets/placeholders-message.png)
+
+Discord formatting works too: **bold**, *italic*, headings and links.
+
+## Placeholders
+
+They're the same on YouTube, Twitch and Kick.
+
+### Video
+
+| Content | Description | Example |
+| --- | --- | --- |
+| `{video.title}` | Title of the video or stream | Late-night build, come hang |
+| `{video.link}` | Link to the video or stream | https://youtube.com/watch?v=oreo123 |
+| `{video.type}` | Kind of post: live, video, premiere, shorts or members | live |
+| `{video.description}` | First line of the description | Live from the Oreo factory |
+| `{video.category}` | Game or category being streamed | Just Chatting |
+| `{video.thumbnail}` | Link to the thumbnail image | https://i.ytimg.com/vi/… |
+| `{video.uploadedAgo}` | How long ago it went up | <Timestamp unix={1738117800} format="R" /> |
+| `{video.uploadedAt}` | When it went up, in each member's timezone | <Timestamp unix={1738117800} format="f" /> |
+| `{video.id}` | ID of the video or stream | oreo123 |
+
+### Channel
+
+| Channel | Description | Example |
+| --- | --- | --- |
+| `{channel.name}` | The creator's display name | Oreo |
+| `{channel.handle}` | The creator's @handle | @oreohq |
+| `{channel.link}` | Link to the creator's channel | https://youtube.com/@oreohq |
+| `{channel.avatar}` | Link to the creator's avatar | https://yt3.ggpht.com/… |
+| `{channel.platform}` | The platform's name | YouTube |
+
+### Pings
+
+| Pings | Description | Example |
+| --- | --- | --- |
+| `{role.pingrole}` | Pings this post's ping roles. `{role.pingroles}` works too | <Mention name="Stream Pings" /> |
+| `{role.everyone}` | Mentions everyone in the server | <Mention name="everyone" /> |
+| `{role.here}` | Mentions everyone who's online | <Mention name="here" /> |
+
+## Tips
+
+- `{video.url}`, `{video.game}` and `{channel.url}` work too. They're the same as `{video.link}`, `{video.category}` and `{channel.link}`.
+- Placeholders aren't case-sensitive.
+- After a stream ends, `{video.link}` points to the recording.
+- Leave the message empty to post only the embed. If both are empty, Oreo posts a short default message.
+
+- Wrap a link in angle brackets, like `<{video.link}>`, to hide Discord's link preview. Oreo's defaults do this.
+- Pings and timestamps only work in the message, embed title and description. Author and footer are plain text.
+- Titles and names come from the creator. They can never ping anyone.
+
+<Callout type="warn">
+Pinging @everyone, @here or a non-mentionable role needs **Mention @everyone, @here and All Roles**, for you and for Oreo.
+</Callout>
+
+Counters have their own placeholders. See [Add a counter](/guide/counters).
+
+## In Discord
+
+Run **/settings**, pick the creator and choose **Message**.

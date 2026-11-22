@@ -1,18 +1,24 @@
 {
-    "name": "Oreo Discord Bot",
+    "name": "Oreo — Discord Notifications",
     "short_name": "Oreo",
-    "description": "Landing Page and Guide for Oreo Discord App",
+    "description": "Pings your Discord community when you or your favourite creator posts or goes live on YouTube, Twitch and Kick.",
     "scope": "/",
     "start_url": "/",
-    "form_factor": "wide",
     "display": "standalone",
-    "background_color": "#13131B",
-    "theme_color": "#13131B",
-    "orientation": "portrait-primary",
-    "icons": [{
-        "src": "/oreo.png",
-        "type": "image/png",
-        "sizes": "675x675",
-        "purpose": "any maskable"
-    }]
+    "background_color": "#17161C",
+    "theme_color": "#17161C",
+    "icons": [
+        {
+            "src": "/oreo.png",
+            "type": "image/png",
+            "sizes": "1024x1024",
+            "purpose": "any"
+        },
+        {
+            "src": "/Icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "any",
+            "purpose": "any"
+        }
+    ]
 }

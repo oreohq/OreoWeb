@@ -1,83 +1,717 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 
-:root {
-    --primary: #FFA277;
-    --background: #13131B;
+@theme {
+    --color-cocoa-950: #08070A;
+    --color-cocoa-900: #0E0C10;
+    --color-cocoa-875: #121214;
+    --color-cocoa-850: #17161C;
+    --color-cocoa-800: #1D1C23;
+    --color-cocoa-700: #27252F;
+    --color-cocoa-650: #2B2935;
+    --color-cocoa-600: #2F2D38;
+    --color-cocoa-550: #363343;
+    --color-cocoa-500: #3F3C4A;
+    --color-cocoa-450: #4C485A;
+    --color-cocoa-400: #585568;
+    --color-cocoa-350: #6A6680;
+    --color-cocoa-300: #8C8CA6;
+
+    --color-cream-100: #FFF3E9;
+    --color-cream-150: #FFE7D1;
+    --color-cream-200: #FFE2CD;
+    --color-cream-300: #FFD0B0;
+    --color-cream-350: #FFC38B;
+    --color-cream-400: #FEBD9F;
+    --color-cream-450: #FFB08A;
+    --color-cream-500: #FFA277;
+    --color-cream-600: #FF8A55;
+    --color-cream-700: #E8703B;
+    --color-cream-800: #B5532A;
+    --color-cream-900: #1B0F09;
+    --color-cream-950: #220902;
+
+    --color-ink-950: var(--color-cocoa-850);
+    --color-ink-900: #1A191F;
+    --color-ink-850: var(--color-cocoa-800);
+    --color-ink-800: #23212A;
+    --color-ink-750: var(--color-cocoa-700);
+    --color-ink-700: #2D2B36;
+    --color-ink-600: var(--color-cocoa-600);
+    --color-ink-500: var(--color-cocoa-500);
+    --color-ink-400: var(--color-cocoa-400);
+    --color-paper: var(--color-cream-100);
+
+    --color-ok: #3DD68C;
+    --color-warn: #F2B544;
+    --color-bad: #F0555D;
+    --color-bad-200: #FFB3B7;
+    --color-bad-250: #FFA3A8;
+    --color-bad-300: #FF8A90;
+    --color-bad-400: #F46A71;
+
+    --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+    --color-youtube: #FF0033;
+    --color-twitch: #9146FF;
+    --color-kick: #53FC18;
+    --color-blurple: #5865F2;
+
+    --font-display: var(--font-fira), ui-sans-serif, system-ui, sans-serif;
+    --font-sans: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
+
+    --radius-4xl: 2rem;
+    --radius-5xl: 2.5rem;
+
+    --animate-marquee: marquee 46s linear infinite;
+    --animate-marquee-reverse: marquee-reverse 46s linear infinite;
+    --animate-pulse-ring: pulse-ring 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    --animate-shimmer: shimmer 2.6s linear infinite;
+    --animate-rise: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-html {
-    min-height: 100vh;
-    min-height: 100svh;
-    scroll-behavior: smooth;
-    background: var(--background) !important;
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+@keyframes marquee-reverse {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+@keyframes pulse-ring {
+    0% {
+        transform: scale(0.85);
+        opacity: 0.7;
+    }
+    70% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.9);
+        opacity: 0;
+    }
+}
+@keyframes shimmer {
+    from {
+        background-position: 200% 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}
+@keyframes crumb {
+    from {
+        transform: rotate(var(--angle)) translateX(0) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: rotate(var(--angle)) translateX(46px) scale(0.2);
+        opacity: 0;
+    }
+}
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(26px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes pop-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 
-::selection {
-    background-color: rgba(255, 130, 77 , 0.4);
+@layer base {
+    :root {
+        color-scheme: dark;
+        --bg: var(--color-cocoa-850);
+        --panel-bg: var(--color-ink-850);
+        --panel-shadow: inset 0 1px 0 --alpha(var(--color-paper) / 3%);
+        --accent-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28), 0 1px 2px rgb(0 0 0 / 0.4);
+        --accent-shadow-pressed: var(--accent-shadow);
+        --raised-shadow: inset 0 1px 0 rgb(255 255 255 / 0.03);
+        --raised-shadow-pressed: var(--raised-shadow);
+        --thumb-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 1px 2px rgb(0 0 0 / 0.4);
+        --input-shadow: inset 0 1px 2px rgb(0 0 0 / 0.25);
+        --press-depth: 0px;
+        --page-glow: none;
+
+        --color-fd-background: var(--color-cocoa-850);
+        --color-fd-foreground: var(--color-cream-100);
+        --color-fd-muted: var(--color-ink-800);
+        --color-fd-muted-foreground: --alpha(var(--color-cream-100) / 55%);
+        --color-fd-popover: var(--color-ink-800);
+        --color-fd-popover-foreground: var(--color-cream-100);
+        --color-fd-card: var(--color-ink-850);
+        --color-fd-card-foreground: var(--color-cream-100);
+        --color-fd-border: --alpha(var(--color-cream-100) / 9%);
+        --color-fd-primary: var(--color-cream-500);
+        --color-fd-primary-foreground: var(--color-cream-900);
+        --color-fd-secondary: var(--color-ink-800);
+        --color-fd-secondary-foreground: var(--color-cream-100);
+        --color-fd-accent: --alpha(var(--color-cream-500) / 12%);
+        --color-fd-accent-foreground: var(--color-cream-300);
+        --color-fd-ring: var(--color-cream-500);
+    }
+
+    /* Long names from Discord must not widen the page. It sits on body so portalled overlays are covered too. */
+    body:has([data-app="dashboard"]),
+    body:has([data-app="status"]) {
+        overflow-wrap: anywhere;
+    }
+
+    :root:has([data-app="dashboard"]),
+    :root:has([data-app="status"]) {
+        --bg: var(--color-ink-950);
+    }
+
+    * {
+        border-color: var(--color-cocoa-700);
+    }
+
+    html {
+        background-color: var(--bg);
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    /* No overflow-x on body. It turns body into its own scroll container and the page stops scrolling. */
+    body {
+        font-weight: var(--font-weight-normal, 400);
+        background-color: var(--bg);
+        background-image: var(--page-glow);
+        background-repeat: no-repeat;
+        color: --alpha(var(--color-cream-100) / 62%);
+    }
+
+    /* Outfit is a variable font. One step heavier keeps dense text from looking washed out on dark. */
+    [data-app="dashboard"],
+    #nd-docs-layout {
+        font-weight: 450;
+        --font-weight-medium: 560;
+        --font-weight-semibold: 650;
+        --font-weight-bold: 750;
+    }
+
+    ::selection {
+        background-color: --alpha(var(--color-cream-500) / 30%);
+        color: var(--color-cream-100);
+    }
+
+    ::-webkit-scrollbar {
+        width: 15px;
+        height: 15px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--color-cocoa-900);
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-cocoa-600);
+        border-radius: 999px;
+        border: 3px solid var(--color-cocoa-900);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--color-cocoa-500);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-cream-500);
+        outline-offset: 2px;
+    }
 }
 
-.scroll {
-    border: 2px solid var(--primary);
-    position: relative;
-    height: 2.2rem;
-    width: 20px;
+
+@layer components {
+    .seam {
+        background: linear-gradient(90deg, transparent, --alpha(var(--color-cream-500) / 35%), transparent);
+    }
+
+    /* counter-reset is set inline from `start` so numbering carries on across lists split by screenshots */
+    .guide-steps {
+        position: relative;
+        list-style: none;
+        margin: 1.25rem 0;
+        padding-left: 3.25rem;
+    }
+    .guide-steps::before {
+        content: "";
+        position: absolute;
+        left: 1.0625rem;
+        top: 0.6rem;
+        bottom: 0.6rem;
+        width: 2px;
+        border-radius: 999px;
+        background: linear-gradient(
+            to bottom,
+            --alpha(var(--color-cream-500) / 45%),
+            --alpha(var(--color-cream-500) / 8%)
+        );
+    }
+    .guide-steps > li {
+        position: relative;
+        counter-increment: guide-step;
+        margin-bottom: 1.1rem;
+    }
+    .guide-steps > li:last-child {
+        margin-bottom: 0;
+    }
+    .guide-steps > li::before {
+        content: counter(guide-step);
+        position: absolute;
+        left: -3.25rem;
+        top: -0.2rem;
+        display: grid;
+        place-items: center;
+        width: 2.125rem;
+        height: 2.125rem;
+        border-radius: 999px;
+        background: var(--color-cocoa-800);
+        border: 1px solid --alpha(var(--color-cream-300) / 22%);
+        color: var(--color-cream-400);
+        font-family: var(--font-display);
+        font-size: 0.9rem;
+        line-height: 1;
+        box-shadow: 0 0 0 5px var(--bg);
+    }
+
+    @media (max-width: 640px) {
+        .guide-steps {
+            padding-left: 2.75rem;
+        }
+        .guide-steps::before {
+            left: 0.875rem;
+        }
+        .guide-steps > li::before {
+            left: -2.75rem;
+            width: 1.75rem;
+            height: 1.75rem;
+            font-size: 0.78rem;
+        }
+    }
+
+    .window-frame {
+        background: linear-gradient(180deg, var(--color-cocoa-800), var(--color-cocoa-900));
+        border: 1px solid --alpha(var(--color-cream-200) / 8%);
+    }
+
+    .skeleton {
+        background: linear-gradient(
+            90deg,
+            var(--color-ink-750) 0%,
+            var(--color-ink-700) 40%,
+            var(--color-ink-750) 80%
+        );
+        background-size: 200% 100%;
+        animation: var(--animate-shimmer);
+    }
+
+    .panel {
+        background: var(--panel-bg);
+        border: 1px solid --alpha(var(--color-cream-200) / 7%);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 3px 0 var(--color-cocoa-950), 0 16px 28px -18px rgb(0 0 0 / 0.9);
+    }
+    .icon-chip {
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        border-radius: 0.625rem;
+        color: var(--color-cream-500);
+        background: var(--color-cocoa-950);
+        box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), inset 0 0 0 1px --alpha(var(--color-cream-200) / 10%);
+    }
+    .accent-fill {
+        background: var(--color-cream-500);
+    }
+    .accent-depth {
+        box-shadow: var(--accent-shadow);
+    }
+    .accent-depth:active:not(:disabled) {
+        transform: translateY(var(--press-depth));
+        box-shadow: var(--accent-shadow-pressed);
+    }
+    .thumb-depth {
+        box-shadow: var(--thumb-shadow);
+    }
+    .raised-depth {
+        box-shadow: var(--raised-shadow);
+    }
+    .raised-depth:active:not(:disabled) {
+        transform: translateY(var(--press-depth));
+        box-shadow: var(--raised-shadow-pressed);
+    }
+
+    .divide-hairline > :not(:last-child) {
+        border-bottom: 1px solid --alpha(var(--color-paper) / 6%);
+    }
+
+    .live-dot {
+        position: relative;
+        display: inline-flex;
+        width: 0.5rem;
+        height: 0.5rem;
+        flex-shrink: 0;
+        border-radius: 999px;
+        background: currentColor;
+    }
+    .live-dot::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        background: currentColor;
+        animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    .popover-in {
+        animation: pop-in 0.16s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .discord-spoiler {
+        border-radius: 3px;
+        background: #3a3c42;
+        color: transparent;
+        cursor: pointer;
+        transition: background-color 0.2s, color 0.2s;
+    }
+    .discord-spoiler[data-revealed="true"] {
+        background: --alpha(#ffffff / 10%);
+        color: inherit;
+    }
 }
 
-.scroll-wheel {
-    background: var(--primary);
-    border-radius: 1rem;
-    left: calc(50% - 1.5px);
-    position: absolute;
-    height: 0.5rem;
-    right: 50%;
-    width: 3px;
-    top: 8px;
+
+
+@layer utilities {
+    .reveal {
+        opacity: 0;
+        transform: translateY(26px);
+        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+    }
+
+    .mask-fade-x {
+        mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .pause-on-hover:hover [class*="animate-marquee"] {
+        animation-play-state: paused;
+    }
 }
 
 
-button.subpixel-antialiased:not(.default):not(.button-primary):not(.button-secondary):not(.button-blurple),
-a[role="button"]:not(.default):not(.button-primary):not(.button-secondary):not(.button-blurple) {
-    @apply py-2 px-4 duration-200 justify-center gap-2 items-center text-medium
+/* The belt snaps back while the tools are down, which hides each item's stage change */
+@keyframes factory-belt {
+    0%, 12% {
+        transform: translateX(0);
+        animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    48%, 100% {
+        transform: translateX(90px);
+    }
+}
+@keyframes factory-roll {
+    0%, 12% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    48%, 100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes factory-roller {
+    0%, 12% {
+        transform: rotate(0);
+        animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    48%, 100% {
+        transform: rotate(450deg);
+    }
+}
+@keyframes factory-drop {
+    0%, 28% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
+    }
+    42%, 100% {
+        transform: translateY(84px);
+    }
+}
+@keyframes factory-tool {
+    0% {
+        transform: translateY(var(--d));
+        animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    12%, 62% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0.55, 0, 0.9, 0.4);
+    }
+    76%, 100% {
+        transform: translateY(var(--d));
+    }
+}
+@keyframes factory-drip {
+    0%, 74% {
+        transform: scaleY(0);
+    }
+    88%, 100% {
+        transform: scaleY(1);
+    }
+}
+@keyframes factory-scan {
+    0%, 50% {
+        opacity: 0;
+    }
+    54% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 0.6;
+    }
+    66%, 100% {
+        opacity: 0;
+    }
+}
+@keyframes factory-lamp {
+    0%, 50% {
+        fill: var(--color-cocoa-500);
+    }
+    53%, 68% {
+        fill: var(--color-ok);
+    }
+    72%, 100% {
+        fill: var(--color-cocoa-500);
+    }
+}
+@keyframes factory-ticker {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-330px);
+    }
+}
+@keyframes factory-flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0.82;
+    }
+    55% {
+        opacity: 0.96;
+    }
+    72% {
+        opacity: 0.78;
+    }
+}
+@keyframes factory-gauge {
+    0%, 100% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(24deg);
+    }
+}
+@keyframes factory-steam {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.5);
+    }
+    25% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+        transform: translate(7px, -38px) scale(1.6);
+    }
+}
+@keyframes factory-slosh {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    50% {
+        transform: translateX(-8px);
+    }
 }
 
-.button {
-    @apply flex text-neutral-100 bg-dark-600 hover:bg-dark-700 py-2 px-4 duration-200 justify-center gap-2 items-center text-medium
+@layer components {
+    .factory {
+        --beat: 2.6s;
+    }
+    .factory-belt {
+        animation: factory-belt var(--beat) infinite;
+    }
+    .factory-roll {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: factory-roll var(--beat) infinite;
+    }
+    .factory-roller {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: factory-roller var(--beat) infinite;
+    }
+    .factory-drop {
+        animation: factory-drop var(--beat) infinite;
+    }
+    .factory-tool {
+        animation: factory-tool var(--beat) infinite;
+    }
+    .factory-drip {
+        transform-box: fill-box;
+        transform-origin: top;
+        transform: scaleY(0);
+        animation: factory-drip var(--beat) infinite;
+    }
+    .factory-scan {
+        opacity: 0;
+        animation: factory-scan var(--beat) infinite;
+    }
+    .factory-lamp {
+        animation: factory-lamp var(--beat) infinite;
+    }
+    .factory-ticker {
+        animation: factory-ticker 11s linear infinite;
+    }
+    .factory-flicker {
+        animation: factory-flicker 1.8s ease-in-out infinite;
+    }
+    .factory-gauge {
+        transform-origin: 146px 164px;
+        animation: factory-gauge 2.4s ease-in-out infinite;
+    }
+    .factory-steam {
+        transform-box: fill-box;
+        transform-origin: center;
+        opacity: 0;
+        animation: factory-steam 3s ease-out infinite;
+    }
+    .factory-slosh {
+        animation: factory-slosh 2.6s ease-in-out infinite;
+    }
 }
 
-.button-primary {
-    @apply flex text-neutral-900 bg-oreo-600 hover:bg-oreo-700 py-2 px-4 duration-200 justify-center gap-2 items-center font-medium text-medium
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
 }
 
-.button-secondary {
-    @apply flex text-neutral-100 bg-dark-600 hover:bg-dark-700 py-2 px-4 duration-200 justify-center gap-2 items-center font-medium text-medium
+
+/* Unlayered so it beats the Fumadocs defaults */
+:root:has(#nd-docs-layout) {
+    --fd-nav-height: 8.5rem;
+}
+@media (width >= 48rem) {
+    :root:has(#nd-docs-layout) {
+        --fd-nav-height: 4rem;
+    }
 }
 
-.button-blurple {
-    @apply flex text-neutral-100 bg-blurple hover:bg-blurple py-2 px-4 duration-200 justify-center gap-2 items-center font-medium text-medium
+#nd-page [data-card].block {
+    border-radius: 1.25rem;
+    border-color: --alpha(var(--color-cream-200) / 7%);
+    background: --alpha(var(--color-cocoa-800) / 60%);
+    padding: 1.1rem 1.25rem;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.07), 0 4px 0 var(--color-cocoa-950), 0 18px 30px -18px rgb(0 0 0 / 0.9);
+    transition: border-color 0.2s, transform 0.2s;
+}
+#nd-page a[data-card].block:hover {
+    border-color: --alpha(var(--color-cream-300) / 20%);
+    background: --alpha(var(--color-cocoa-800) / 80%);
+    transform: translateY(-2px);
+}
+#nd-page [data-card].block h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--color-cream-100);
+}
+#nd-sidebar {
+    background: transparent;
+    border-color: --alpha(var(--color-cream-200) / 6%);
 }
 
-.text-sm button.subpixel-antialiased,
-.text-sm a[role="button"] {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
+#nd-sidebar p ~ a {
+    padding-inline-start: 2rem;
 }
 
-.before\:border-t::before {
-    border-top-width: 0px !important;
+#nd-page article .prose {
+    font-size: 1rem;
+    line-height: 1.8;
+}
+#nd-page article .prose h2 {
+    margin-top: 3.5rem;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid --alpha(var(--color-cream-200) / 7%);
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.65rem;
+    color: var(--color-cream-100);
+}
+#nd-page article .prose > h2:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+}
+#nd-page article .prose h3 {
+    margin-top: 2.25rem;
+    margin-bottom: 0.75rem;
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--color-cream-200);
+}
+#nd-page article .prose p {
+    margin-block: 1.1rem;
+}
+#nd-page article .prose li {
+    margin-block: 0.55rem;
+}
+#nd-page article .prose table {
+    margin-block: 1.75rem;
+}
+#nd-page article .prose img {
+    margin-block: 2rem;
 }
 
-::-webkit-scrollbar {
-    width: 14px;
-}
 
-::-webkit-scrollbar-track {
-    background-color: #232330;
+/* Fumadocs draws the table of contents rail at 10%, which is too faint on cocoa */
+#nd-toc .bg-fd-foreground\/10 {
+    background-color: --alpha(var(--color-cream-200) / 22%);
 }
-
-::-webkit-scrollbar-thumb {
-    background: #4a4a61;
-    border-radius: 8px;
+#nd-toc .stroke-fd-foreground\/10 {
+    stroke: --alpha(var(--color-cream-200) / 22%);
 }

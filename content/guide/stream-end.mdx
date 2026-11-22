@@ -1,0 +1,38 @@
+---
+title: When the stream ends
+description: Update, delete or keep the post when a stream ends.
+---
+
+A go-live post is only right while the stream is on. Choose what Oreo does with it afterwards. This setting shows when the creator announces livestreams.
+
+1. Open the creator in the [dashboard](/dashboard) and go to **When the stream ends**.
+2. Pick one:
+   - **Update it** (default): the post turns grey, says how long the stream lasted, and links the recording.
+   - **Delete it**: keeps the channel tidy, so only live streams stay listed.
+   - **Leave it**: the post stays exactly as it was.
+3. Click **Save changes**.
+
+![When the stream ends](/guide-assets/stream-end-section.png)
+
+## What an updated post looks like
+
+- The embed turns grey and the footer changes from "Live now" to "Stream ended".
+- A **Streamed for** field shows how long it lasted, for example 2h 14m.
+- A line under the message says when it ended.
+- The button changes to **Watch the VOD**, or **Visit on Twitch** when there's no recording.
+- `{video.link}` points to the recording.
+
+Platforms take a while to publish recordings. Oreo keeps checking for up to 90 minutes and links it as soon as it's ready.
+
+Switch the live preview to **Ended** to see it before it happens.
+
+![The same post after the stream, in the preview's Ended tab](/guide-assets/stream-end-ended.png)
+
+## Good to know
+
+- If a Kick stream restarts within 3 minutes, Oreo updates the same post instead of pinging again.
+- In announcement channels, **Publish in announcement channels** also sends each post to servers that follow the channel. Discord allows 10 published posts per channel per hour.
+
+## In Discord
+
+Run **/settings**, pick the creator and open **More**.

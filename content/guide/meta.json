@@ -1,0 +1,27 @@
+{
+  "title": "Guide",
+  "pages": [
+    "index",
+    "---[Rocket]Get started---",
+    "add",
+    "quick-setup",
+    "testnotifications",
+    "---[BellRing]Notifications---",
+    "customize",
+    "pingrole",
+    "placeholders",
+    "embeds",
+    "stream-end",
+    "---[Users]Your members---",
+    "notify",
+    "---[Wrench]Server tools---",
+    "counters",
+    "overview",
+    "---[Crown]Premium---",
+    "premium",
+    "bot-profile",
+    "---[LifeBuoy]Help---",
+    "commands",
+    "permissions"
+  ]
+}

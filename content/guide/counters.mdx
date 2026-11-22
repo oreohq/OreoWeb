@@ -1,0 +1,46 @@
+---
+title: Add a counter
+description: Show live subscriber or follower counts in a channel name.
+---
+
+A counter is a channel whose name shows a live count, like "📺 Oreo: 1.24M subs". Oreo keeps it up to date.
+
+1. Open your server in the [dashboard](/dashboard) and go to **Counters**.
+2. Click **Add counter**, or a free slot.
+3. Pick a creator. Choose **Another creator** to count any channel, even one you don't post about.
+4. Choose what it **Shows**. YouTube: subscribers, videos or views. Twitch and Kick: followers.
+5. Choose the **Channel**. **Create a new one** makes a locked voice channel. **Use an existing one** renames a channel you pick.
+6. Write the **Channel name**. It must include `{count}`.
+7. Click **Add counter**.
+
+![Counters](/guide-assets/counters-page.png)
+
+The real number shows up within a few minutes. Discord limits renames, so updates can take up to 10 minutes.
+
+![Adding a counter](/guide-assets/counters-dialog.png)
+
+## Channel name placeholders
+
+| Placeholder | Description | Example |
+| --- | --- | --- |
+| `{count}` | The number, shortened | 128.4K |
+| `{count.exact}` | The full number | 128,400 |
+| `{name}` | The creator's name | Oreo |
+| `{platform}` | The platform's name | YouTube |
+| `{metric}` | What's being counted | Subscribers |
+
+## Good to know
+
+- <PremiumOnly>Free servers get 2 counters. Premium servers get 10.</PremiumOnly><PremiumOff>Each server can have 2 counters.</PremiumOff>
+- Deleting a counter in the dashboard keeps the channel. Oreo just stops renaming it. In **/settings** you can tick **Remove the channel too**.
+- Renamed the channel by hand? If the new name still shows the number, Oreo keeps your wording from then on.
+- **Create a new one** makes a 📊 voice channel that members can see but can't join.
+- Each channel can show one counter.
+
+<Callout type="warn" title="Permissions">
+Adding or changing a counter needs **Manage Channels**. For an existing channel, you and Oreo both need it there.
+</Callout>
+
+## In Discord
+
+Run **/settings** and choose **Counters**.
