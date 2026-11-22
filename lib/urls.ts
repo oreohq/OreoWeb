@@ -2,8 +2,8 @@ export const getBaseUrl = () => {
     return process.env.PUBLIC_BASE_URL ?? "http://localhost:3100";
 };
 
-/** Usual messaging permissions, plus Manage Channels for counters and Manage Roles for live roles and the Notify me button */
-const BOT_PERMISSIONS = "268921936";
+/** Usual messaging permissions, plus Manage Channels for counters, Manage Roles for live roles and the Notify me button, and Change Nickname for the bot profile */
+const BOT_PERMISSIONS = "336030800";
 
 const inviteUrl = `https://discord.com/oauth2/authorize?client_id=1021275413969899580&permissions=${BOT_PERMISSIONS}&integration_type=0&scope=bot+applications.commands`;
 

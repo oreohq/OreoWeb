@@ -1,11 +1,11 @@
-import type { ContentType, EmbedConfig, GuildCreator, MessageTemplates, PingOverrides } from "@/lib/api/types";
-import { CONTENT_TYPES, MAX_PING_ROLES, allPingRoles } from "@/lib/api/types";
+import type { ChannelOverrides, ContentType, EmbedConfig, GuildCreator, MessageTemplates, PingOverrides } from "@/lib/api/types";
+import { CHANNEL_KINDS, CONTENT_TYPES, MAX_PING_ROLES, allPingRoles } from "@/lib/api/types";
 
 
 export type CreatorPatch = Partial<
     Pick<
         GuildCreator,
-        "enabled" | "channelId" | "contentTypes" | "pingRoles" | "pingOverrides" | "publishPosts" | "watchButton" | "notifyButton" | "onStreamEnd" | "liveRoleId" | "liveUserId"
+        "enabled" | "channelId" | "channelOverrides" | "contentTypes" | "pingRoles" | "pingOverrides" | "publishPosts" | "watchButton" | "notifyButton" | "onStreamEnd" | "liveRoleId" | "liveUserId"
     >
 > & {
     messages?: Partial<MessageTemplates>;
@@ -39,6 +39,8 @@ const sameRoles = (a: string[], b: string[]) => a.length === b.length && a.every
 const sameOverrides = (a: PingOverrides, b: PingOverrides) =>
     CONTENT_TYPES.every((type) => (a[type] === undefined) === (b[type] === undefined) && sameRoles(a[type] ?? [], b[type] ?? []));
 
+const sameChannels = (a: ChannelOverrides | undefined, b: ChannelOverrides | undefined) => CHANNEL_KINDS.every((kind) => a?.[kind] === b?.[kind]);
+
 
 /** Only what changed, so a save never overwrites settings someone else edited meanwhile */
 export function buildPatch(base: GuildCreator, draft: GuildCreator): CreatorPatch {
@@ -50,6 +52,7 @@ export function buildPatch(base: GuildCreator, draft: GuildCreator): CreatorPatc
     if (!sameRoles(draft.pingRoles, base.pingRoles)) patch.pingRoles = draft.pingRoles;
     // The API takes the whole map of per-kind lists, so one changed kind sends them all
     if (!sameOverrides(draft.pingOverrides, base.pingOverrides)) patch.pingOverrides = draft.pingOverrides;
+    if (!sameChannels(draft.channelOverrides, base.channelOverrides)) patch.channelOverrides = draft.channelOverrides;
     if (!sameTypes(draft.contentTypes, base.contentTypes)) patch.contentTypes = CONTENT_TYPES.filter((type) => draft.contentTypes.includes(type));
 
     const messages: Partial<MessageTemplates> = {};
@@ -83,6 +86,12 @@ export function upgradePatch(raw: unknown): CreatorPatch {
         const source = patch.pingOverrides && typeof patch.pingOverrides === "object" ? (patch.pingOverrides as Record<string, unknown>) : {};
         for (const type of CONTENT_TYPES) if (isRoleList(source[type])) overrides[type] = source[type] as string[];
         patch.pingOverrides = overrides;
+    }
+    if (patch.channelOverrides !== undefined) {
+        const channels: ChannelOverrides = {};
+        const source = patch.channelOverrides && typeof patch.channelOverrides === "object" ? (patch.channelOverrides as Record<string, unknown>) : {};
+        for (const kind of CHANNEL_KINDS) if (typeof source[kind] === "string" && /^\d{17,20}$/.test(source[kind] as string)) channels[kind] = source[kind] as string;
+        patch.channelOverrides = channels;
     }
 
     if (Array.isArray(patch.contentTypes)) {

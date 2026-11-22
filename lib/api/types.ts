@@ -85,6 +85,10 @@ export type MessageTemplates = Record<ContentType, string>;
 /** A kind's own list replaces the default roles for it, and an empty list pings no one */
 export type PingOverrides = Partial<Record<ContentType, string[]>>;
 
+export type ChannelKind = 'live' | 'video' | 'premiere' | 'shorts';
+export type ChannelOverrides = Partial<Record<ChannelKind, string>>;
+export const CHANNEL_KINDS: readonly ChannelKind[] = ['live', 'video', 'premiere', 'shorts'];
+
 export function pingRolesFor(creator: { pingRoles: string[], pingOverrides: PingOverrides }, type: ContentType): string[] {
   return creator.pingOverrides[type] ?? creator.pingRoles;
 }
@@ -99,6 +103,7 @@ export interface GuildCreator {
   creator: Creator;
   enabled: boolean;
   channelId: string | null;
+  channelOverrides: ChannelOverrides;
   contentTypes: ContentType[];
   pingRoles: string[];
   pingOverrides: PingOverrides;

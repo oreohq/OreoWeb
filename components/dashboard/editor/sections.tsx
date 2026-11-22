@@ -18,7 +18,7 @@ import {
     TriangleAlert,
     UserRound
 } from "@/components/ui/glyphs";
-import { MAX_PING_ROLES, allPingRoles, pingRolesFor, type ContentType, type EmbedConfig, type GuildCreator, type GuildResources, type PingOverrides, type StreamEndAction } from "@/lib/api/types";
+import { CHANNEL_KINDS, MAX_PING_ROLES, allPingRoles, pingRolesFor, type ChannelKind, type ContentType, type EmbedConfig, type GuildCreator, type GuildResources, type PingOverrides, type StreamEndAction } from "@/lib/api/types";
 import { ColorPicker, ContentTypePicker, ImageField, RoleDot, SectionCard, contentIcon } from "@/components/dashboard/editor/fields";
 import { CONTENT_TYPE_NAMES, PLATFORM_CONTENT_TYPES, platformName } from "@/lib/dashboard/platforms";
 import { LIMITS, type Errors } from "@/components/dashboard/editor/model";
@@ -160,6 +160,10 @@ export function GeneralSection({
                 </div>
             )}
 
+            {platform === "youtube" && resources && (
+                <KindChannels draft={draft} set={set} options={options} errors={errors} />
+            )}
+
             <SwitchField
                 label="Publish in announcement channels"
                 description={
@@ -172,6 +176,62 @@ export function GeneralSection({
                 onChange={(value) => set("publishPosts", value)}
             />
         </SectionCard>
+    );
+}
+
+
+function KindChannels({
+    draft,
+    set,
+    options,
+    errors
+}: Pick<SectionProps, "draft" | "set" | "errors"> & { options: ComboOption[] }) {
+    const idBase = useId();
+    const kinds = CHANNEL_KINDS.filter((kind) => draft.contentTypes.includes(kind));
+    const overrides = draft.channelOverrides ?? {};
+
+    const setChannel = (kind: ChannelKind, value: string | null) => {
+        const next = { ...overrides };
+        if (value === null || value === draft.channelId) delete next[kind];
+        else next[kind] = value;
+        set("channelOverrides", next);
+    };
+
+    if (!kinds.length) return null;
+
+    return (
+        <div className="space-y-3 rounded-xl border border-paper/[0.07] bg-ink-900 p-3.5">
+            <div>
+                <p className="text-sm font-medium text-paper/85">Post each kind in its own channel</p>
+                <p className="mt-0.5 text-xs text-paper/65">Members-only posts go to the channel of what they are: a stream, premiere, short or video.</p>
+            </div>
+            {kinds.map((kind) => {
+                const labelId = `${idBase}-${kind}`;
+                const error = errors[`channelOverrides.${kind}`];
+                return (
+                    <div key={kind} className="grid gap-1.5 sm:grid-cols-[8rem_1fr] sm:items-center sm:gap-3">
+                        <p id={labelId} className="flex items-center gap-2 text-sm text-paper/80">
+                            {contentIcon(kind, "size-4 text-paper/55")}
+                            {CONTENT_TYPE_NAMES[kind].many}
+                        </p>
+                        <div className="min-w-0">
+                            <Combobox
+                                value={overrides[kind] ?? null}
+                                onChange={(value) => setChannel(kind, value)}
+                                options={options}
+                                clearOption={{ label: "Main channel", icon: <Hash className="size-4" /> }}
+                                searchPlaceholder="Search channels"
+                                emptyText="No text channels match."
+                                missingLabel="Unknown channel, it may have been deleted"
+                                searchable
+                                aria-labelledby={labelId}
+                            />
+                            {error && <p className="mt-1.5 text-xs text-[var(--color-bad-300)]" role="alert">{error}</p>}
+                        </div>
+                    </div>
+                );
+            })}
+        </div>
     );
 }
 

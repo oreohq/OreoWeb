@@ -568,7 +568,7 @@ function SaveBar({
 
 
 function sectionOf(key: string) {
-    if (key === "contentTypes") return "general";
+    if (key === "contentTypes" || key.startsWith("channelOverrides.")) return "general";
     if (key.startsWith("messages.") || key.startsWith("pingOverrides.")) return "message";
     if (key.startsWith("embed.")) return "embed";
     return "pings";
