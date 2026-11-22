@@ -1,34 +1,68 @@
 # Privacy Policy
-**last modified 18/02/2024 (DD/MM/YYYY)**
+**Last updated 21/11/2026 (DD/MM/YYYY)**
 
-## 1. Introduction
-Welcome to Oreo, a notifier discord bot (referred to collectively as "Oreo," "we," "us," or "our"). This Privacy Policy outlines the information we collect, how we use it, and the choices you have concerning your personal data. By using Oreo, you consent to the practices described in this Privacy Policy.
+## 1. Who we are
+Oreo is a Discord bot that posts notifications when YouTube, Twitch and Kick creators go live or upload, together with its website and dashboard ("Oreo", "we", "us"). This policy explains what we store, why, for how long, and how to have it removed. By using Oreo you agree to it.
 
-## 2. Information we Collect
-Our database is designed to store a variety of information to enhance the user experience. This includes
-- **2.1 Account Information:** When you connect your Discord account with Oreo, we will store your unique Discord user ID to facilitate communication.
-- **2.2 Information from actions taken:** This includes information such as the Discord servers you own or manage and settings you choose.
-- **2.3 Information you provide directly to us:** You may have the option to submit additional information as you use Oreo. For example, you may participate in surveys where you can provide feedback on the services, or submit information to our support teams.
+## 2. What we store
+**When you log in to the dashboard**
+- Your Discord user ID, username, display name and avatar, from Discord's `identify` scope.
+- The servers you're in and your permissions there, from Discord's `guilds` scope. We use it to show the servers you can manage.
+- The access tokens Discord gives us, stored encrypted, so the dashboard can keep reading your server list.
+- A session cookie that keeps you logged in for up to 7 days, and a short-lived cookie used only while you log in.
 
-## 3. How We Use Your Information
-The data that we collect and store is used to provide you with the best possible service and to enable the various functions of our service. This includes providing notifications to your guilds.
-Our goal is to enhance your experience and provide you with a personalized and efficient service.
+**For each server that uses Oreo**
+- The server's ID, and the IDs of the channels and roles you pick.
+- The creators and counters you add and their settings: messages, embeds, buttons, ping roles, live role and stream-end behaviour.
+- The Discord user ID of whoever added each creator or counter, and the user ID you enter for a live role.
+- The bot profile you set up: nickname, bio, avatar and banner.
+- A history of the notifications Oreo posted, so the dashboard can show recent activity and Oreo can update posts when a stream ends.
 
-## 4. Data Security
-We take the security of your information very seriously. When we collect your data, we make every effort to protect it from theft, loss, unauthorized access, disclosure, copying, and use. We employ a variety of security measures to safeguard your information and ensure its confidentiality.
-<br /><br />
-However, it is important to note that no electronic data transmission or storage is completely secure and absolute data security cannot be guaranteed. Despite our best efforts, there is always a risk of a data breach. In such an event, we will comply with all applicable laws and regulations to protect your information and mitigate any potential harm.
-<br /><br />
-Access to sensitive data is strictly limited to our chief developers. We have strict protocols in place to ensure that this data is never viewed, edited, shared or published without the express permission of the data creator. Our goal is to provide you with a secure and trustworthy service that respects your privacy and protects your information.
+**For premium**
+- Ko-fi payment details: the transaction ID, payment type, amount, currency, tier, when it was paid, and the Discord account linked on Ko-fi if there is one.
+- A SHA-256 hash of the email address you paid with, used to match payments to you. We never store the email address itself, but a hash of a known address can be matched, so we treat it as personal data.
+- Which servers you gave premium to, and when.
 
-## 5. Data Deletion
-If you wish to have all of your personal data that has been collected by us permanently deleted, please contact us via email at mail@oreos.fun. We will take all necessary steps to ensure that your request is processed in a timely and efficient manner. In addition, we kindly request that you log out of our Service from all devices and browsers on which you have accessed it. If necessary, please also manually delete all cookies associated with our Service. This will help to ensure that your personal data is fully removed from our systems.
+**From the platforms**
+- Public details of the creators you add, such as their name, avatar, videos and streams, from YouTube, Twitch and Kick.
 
-## 6. Affiliation Disclaimer
-Oreo is an independent service and is not affiliated with Discord, YouTube, Rooter or Twitch. Any references to these platforms are for informational purposes only, and we do not claim any endorsement or sponsorship from them.
+**Technical data**
+- Your IP address is used only to rate-limit requests. It is kept in memory for at most an hour and isn't logged.
+- Our logs can contain Discord user and server IDs, for example when you log in, claim premium or when Oreo joins or leaves a server.
 
-## 7. Changes to this Privacy Policy
-We may update this Privacy Policy from time to time. Please review the "Last modified" date at the starting of this page to see when it was last revised.
+## 3. How we use it
+Only to run Oreo: to post and update notifications, keep counters current, show you your servers in the dashboard, apply premium, prevent abuse and fix problems. We don't sell your data, show ads, use analytics or tracking, or build profiles.
 
-## 8. Contact us
-If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us on our [Discord Server](/support).
+## 4. Who can see it
+- **Your server's managers** can see and change that server's settings in Discord and the dashboard.
+- **Visitors to our website** may see the name, icon and member count of some of the largest servers using Oreo.
+- **Oreo's developers** can access stored data only to run and support Oreo. Payments, premium changes and servers adding or removing Oreo are posted to a private Discord channel for them.
+- **Service providers** host Oreo's website, API and database for us, and only process data to provide that service.
+- **Discord, YouTube, Twitch, Kick and Ko-fi** receive only what's needed to run Oreo, under their own privacy policies. top.gg receives Oreo's total server count, nothing about you.
+
+## 5. How long we keep it
+- Sessions end after 7 days or when you log out. Logging out also revokes Oreo's access to your Discord account.
+- Your server list is cached for up to an hour.
+- Notification history is deleted after 7 days, or after 30 days for live streams.
+- Server settings, creators, counters, history and the bot profile are kept while Oreo is in the server, and deleted 30 days after Oreo is removed from it. If Oreo is added back within 30 days, they're kept.
+- Payment and premium records are kept for our records and so premium keeps working. Ask us if you want them deleted.
+
+## 6. Security
+Sessions are stored as hashes, Discord tokens are encrypted, cookies are secure and HTTP-only, and access to the database is limited. No system is perfectly secure, but we work to protect your data and will act quickly if something goes wrong.
+
+## 7. Your choices
+- Remove a creator or counter, or delete the bot profile, from the dashboard or **/settings** at any time.
+- Remove Oreo from your server to stop it posting. Its data for that server is deleted 30 days later.
+- To have your data or your server's data deleted sooner, ask in our [Discord server](/support) or email mail@oreo.aniket.zip.
+
+## 8. Children
+Oreo is for people old enough to use Discord where they live, and at least 13.
+
+## 9. Not affiliated
+Oreo is independent and isn't affiliated with, or endorsed by, Discord, YouTube, Twitch, Kick or Ko-fi.
+
+## 10. Changes
+We may update this policy. The date at the top shows the latest version. If a change is significant, we'll announce it in our [Discord server](/support).
+
+## 11. Contact
+Questions? Ask in our [Discord server](/support) or email mail@oreo.aniket.zip.

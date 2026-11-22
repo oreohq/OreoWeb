@@ -1,0 +1,32 @@
+---
+title: Let members opt in
+description: The Notify me button and /notify.
+---
+
+Not everyone wants every ping. Let members pick the creators they care about. They get the creator's ping roles, and nobody else is bothered.
+
+## Turn on the button
+
+1. Open the creator in the [dashboard](/dashboard) and go to **Pings & roles**.
+2. Add at least one **Ping role**, like @Stream Pings.
+3. Turn on the **"Notify me" button** and click **Save changes**.
+
+Every notification from that creator now has a 🔔 **Notify me** button.
+
+{/* screenshot needed: notify-button.png (The Notify me button on a notification) */}
+
+## What members see
+
+- **Press it once** to get the roles for that kind of post. A button on a video gives the video roles, a button on a stream gives the stream roles.
+- **Press it again** to stop. Oreo asks first, and warns if the same role also pings for other kinds of posts. The question expires after 5 minutes.
+- Removing the last ping role turns the button off.
+
+## /notify
+
+Members can run **/notify** to see every creator in the server that has the button on, up to 25. Picking a creator gives its roles. Unpicking removes them.
+
+{/* screenshot needed: notify-command.png (/notify) */}
+
+<Callout type="warn" title="Oreo has to be able to give the role">
+Oreo needs **Manage Roles**, and its role has to sit above the ping role. Oreo never hands out roles with moderator permissions, like Administrator, Manage Messages or Mention Everyone.
+</Callout>

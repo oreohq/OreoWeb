@@ -1,0 +1,51 @@
+---
+title: Permissions and fixes
+description: What Oreo needs, and what to do when a post fails.
+---
+
+## What Oreo needs
+
+[Invite Oreo](/invite) with every permission ticked. Here's what the main ones are for:
+
+| Permission | Why |
+| --- | --- |
+| View Channels, Send Messages | Post notifications |
+| Embed Links | Attach the embed |
+| Mention @everyone, @here and All Roles | Ping roles that aren't mentionable, @everyone and @here |
+| Manage Roles | The Notify me button and the live role |
+| Manage Channels | Counters |
+
+### Channel overrides
+
+Channel overrides count too. If #oreo-live denies Send Messages for Oreo's role, Oreo can't post there even with the server permission.
+
+## What you need
+
+- **Manage Server** to log in to the dashboard and to use **/settings**.
+- You can only pick channels you can post in yourself.
+- You can only use roles you could give out yourself.
+- Pinging @everyone, @here or a non-mentionable role needs **Mention @everyone, @here and All Roles**.
+
+## Troubleshooting
+
+### A notification didn't arrive
+
+1. Check **Recent activity** on the server's Overview in the [dashboard](/dashboard). A failed notification says why.
+2. Check the **Health** list on the server's Overview.
+3. [Send a test](/guide/testnotifications). It shows the problem straight away.
+4. Check [Oreo's status](/status) in case the problem is on Oreo's side.
+
+### Common problems
+
+| You see | Fix |
+| --- | --- |
+| "Oreo needs … in #oreo-live to post there" | Give Oreo's role that permission in the channel, or pick another channel. |
+| "The notification channel was removed" | Pick a new channel for the creator. |
+| "Oreo can't give @Stream Pings" | Move Oreo's role above that role, and give Oreo **Manage Roles**. |
+| "Oreo doesn't hand out @Mods" | The role has moderator permissions. Pick a role without them. |
+| "Only members with Mention Everyone can make Oreo ping it" | Make the role mentionable, or ask someone with that permission. |
+| "No free YouTube slots" | Remove a creator first<PremiumOnly>, or get [premium](/guide/premium)</PremiumOnly>. |
+| A creator says **Connecting** for a long time | Oreo keeps retrying by itself. If it never connects, ask in the [support server](/support). |
+| A counter isn't changing | Discord allows 2 renames per 10 minutes. Give Oreo **Manage Channels** there. |
+
+Still stuck? Ask in the [support server](/support).
