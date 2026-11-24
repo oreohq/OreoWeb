@@ -9,23 +9,23 @@ Next.js 15 (App Router), React 19, Tailwind CSS 4, Fumadocs (guide), TypeScript.
 
 ```bash
 cp .env.example .env.local    # fill in the values
-yarn install
-yarn dev                      # http://localhost:3100
+pnpm install
+pnpm dev                      # http://localhost:3100
 ```
 
 ```bash
-yarn typecheck
-yarn build && yarn start
+pnpm typecheck
+pnpm build && pnpm start
 ```
 
 ## Environment
 
 | Name | What it is |
 | --- | --- |
-| `API_URL` | The Oreo API. Defaults to `http://localhost:5050`. Read at build time, so rebuild (or restart `yarn dev`) after changing it. |
+| `API_URL` | The Oreo API. Defaults to `http://localhost:5050`. Read at build time, so rebuild (or restart `pnpm dev`) after changing it. |
 | `PUBLIC_BASE_URL` | This site's public origin, for canonical and Open Graph URLs. Defaults to `http://localhost:3100`. |
 | `NEXT_PUBLIC_PREMIUM` | `true` shows premium: the Premium page, buy and claim buttons, upsells, and the guide's Premium and Bot profile pages. Unset (or anything else) hides them. A server given premium still shows its badge, and in-server upsells also need the API's `limits.premiumOnSale`. Inlined at build time, so rebuild after changing it. |
-| `NEXT_DIST_DIR` | Build folder. Defaults to `.next`. Set `.next-prod` to build while `yarn dev` runs. |
+| `NEXT_DIST_DIR` | Build folder. Defaults to `.next`. Set `.next-prod` to build while `pnpm dev` runs. |
 
 ## How it talks to the API
 
@@ -54,7 +54,7 @@ lib/
 
 ## Deploying to Vercel
 
-1. Import the project (root: this folder). Vercel picks up Next.js and yarn on its own.
+1. Import the project (root: this folder). Vercel picks up Next.js and pnpm on its own.
 2. Set `API_URL` (the API's HTTPS URL) and `PUBLIC_BASE_URL` (this site's origin) for Production.
 3. Add the custom domain and its DNS record.
 4. On the API: `DASHBOARD_URL` set to this site's origin, and `TRUST_PROXY` set so rate limits see the visitor's IP.
