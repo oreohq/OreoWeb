@@ -10,6 +10,7 @@ Oreo posts Discord notifications when YouTube, Twitch and Kick creators go live 
 ## 3. Using Oreo
 - You must be old enough to use Discord where you live, and at least 13.
 - You must follow [Discord's Terms of Service](https://discord.com/terms) and Community Guidelines.
+- Oreo uses YouTube API Services, so by using Oreo you also agree to be bound by the [YouTube Terms of Service](https://www.youtube.com/t/terms).
 - Don't use Oreo to spam, harass, or post content that breaks the law or Discord's rules.
 - Don't try to break, overload or reverse-engineer Oreo, get around its limits, or access data that isn't yours.
 

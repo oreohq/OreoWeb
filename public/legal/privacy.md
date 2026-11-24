@@ -26,6 +26,11 @@ Oreo is a Discord bot that posts notifications when YouTube, Twitch and Kick cre
 **From the platforms**
 - Public details of the creators you add, such as their name, avatar, videos and streams, from YouTube, Twitch and Kick.
 
+**YouTube API Services**
+- Oreo uses YouTube API Services. By using Oreo you also agree to the [YouTube Terms of Service](https://www.youtube.com/t/terms), and Google's use of data is covered by the [Google Privacy Policy](http://www.google.com/policies/privacy).
+- Oreo only reads public YouTube data (channel, video and stream details). It never asks you to sign in with Google and never accesses a Google account, so there is no Google access to revoke.
+- YouTube channel statistics for counters are kept for 10 minutes. Other YouTube details are kept only while a server follows that creator or shows its counter, and are deleted when none does.
+
 **Technical data**
 - Your IP address is used only to rate-limit requests. It is kept in memory for at most an hour and isn't logged.
 - Our logs can contain Discord user and server IDs, for example when you log in, claim premium or when Oreo joins or leaves a server.
